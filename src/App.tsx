@@ -1,9 +1,8 @@
+import "./App.css";
+import Details from "./details";
+
 function App() {
-  return (
-    <div>
-      <p>React with typescript</p>
-    </div>
-  );
+  return <Details />;
 }
 
 export default App;
