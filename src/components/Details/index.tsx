@@ -4,6 +4,7 @@ import validator from "validator";
 import MuiPhoneNumber from "material-ui-phone-number";
 import formUpload from "../../services/api/formUpload";
 import "./details.css";
+import { useNavigate } from "react-router-dom";
 
 function Details() {
   const [firstName, setFirstName] = useState<string | null>(null);
@@ -12,6 +13,7 @@ function Details() {
   const [emailAddress, setEmailAddress] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const validateForm = (): Boolean => {
     if (!firstName || !lastName || !phoneNumber || !emailAddress || !password) {
       return false;
@@ -53,7 +55,7 @@ function Details() {
     };
     const response = await formUpload(formData);
     console.log(response);
-    setIsLoading(false);
+    navigate("/success", { state: formData });
   };
 
   function capitalizeFirstLetterName(name: string): string {
